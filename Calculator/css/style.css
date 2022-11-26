@@ -1,0 +1,62 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Gotham Rounded, sans-serif;
+  font-weight: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #CBCE91FF, #EA738DFF);
+  }
+  .calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;							/* grid will fill 100% of the height all the time */
+    grid-template-columns: repeat(4, 100px);	/* 4 columns each 100 PX wide */
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);	/*  the largest max-content contribution of the grid items occupying the grid track */
+    }
+	
+	/* use > to select all elements of type button that are immediate childre of clas calculator-grid */
+	.calculator-grid > button { 
+      cursor: pointer;
+      font-size: 2rem;
+      border: 1px, solid #FFFFFF;
+      outline: none;
+      background-color: rbga(255, 255, 255, 0.75);
+    }
+
+      .calculator-grid > button:hover {
+        background-color: #a9a9a9;
+      }
+	  
+	  /* AC and = buttons span two columns with different background color */
+      .span-two {
+        grid-column: span 2;
+        color: #adf802;
+        background-color: rgba(139, 0, 139, 0.8);
+      }
+	  
+	  /* output class has previous-operand and current-operand as child classes */
+      .output{
+        grid-column: 1 / -1;					/* Span across entire width of the grid */
+        background-color: rgba(0, 0, 0, 0.75);
+        display: flex;							/* Use flex to align items */
+        align-items: flex-end;					/* align to the right hand side */
+        justify-content: space-around;			/* Space out */
+        flex-direction: column;					/* Align column output vertically */
+        padding: 10px;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+	  /* format the color and font of previous-operand and current-operand differently */
+      .output .previous-operand{
+        color: rgba(255,255, 255, 0.75);
+        font-size: 1.5rem;
+      }
+
+      .output .current-operand{
+        color: white;
+        font-size: 2.5rem;
+      }
